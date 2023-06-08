@@ -6,31 +6,190 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
 
+#define QWERTY    0
+#define NAV       1
+#define FUN       3
+#define NUM       2
 
 &led_strip {
-    chain-length = <31>; 
+    chain-length = <31>;
 };
- 
 
 / {
+    combos {
+         compatible = "zmk,combos";
+         combo_EXCL {
+             timeout-ms = <50>;
+             key-positions = <3 16>;
+             bindings = <&kp EXCL>;
+         };
+         combo_AT {
+             timeout-ms = <50>;
+             key-positions = <2 14>;
+             bindings = <&kp AT>;
+         };
+         combo_HASH {
+             timeout-ms = <50>;
+             key-positions = <3 15>;
+             bindings = <&kp HASH>;
+         };
+         combo_DLLR {
+             timeout-ms = <50>;
+             key-positions = <4 16>;
+             bindings = <&kp DLLR>;
+         };
+         combo_PRCNT {
+             timeout-ms = <50>;
+             key-positions = <5 17>;
+             bindings = <&kp PRCNT>;
+         };
+         combo_CARET {
+             timeout-ms = <50>;
+             key-positions = <6 18>;
+             bindings = <&kp CARET>;
+         };
+         combo_AMPS {
+             timeout-ms = <50>;
+             key-positions = <7 19>;
+             bindings = <&kp AMPS>;
+         };
+         combo_STAR {
+             timeout-ms = <50>;
+             key-positions = <8 20>;
+             bindings = <&kp STAR>;
+         };
+         combo_QMARK {
+             timeout-ms = <50>;
+             key-positions = <8 19>;
+             bindings = <&kp QMARK>;
+         };
+         combo_COLON {
+             timeout-ms = <50>;
+             key-positions = <35 20>;
+             bindings = <&kp COLON>;
+         };
+         combo_DQT {
+             timeout-ms = <50>;
+             key-positions = <19 20>;
+             bindings = <&kp DQT>;
+         };
+         combo_SQT {
+             timeout-ms = <50>;
+             key-positions = <20 21>;
+             bindings = <&kp SQT>;
+         };
+         combo_UNDER{
+             timeout-ms = <50>;
+             key-positions = <15 28>;
+             bindings = <&kp UNDER>;
+         };
+         combo_TILDE {
+             timeout-ms = <50>;
+             key-positions = <16 28>;
+             bindings = <&kp TILDE>;
+         };
+         combo_GRAVE {
+             timeout-ms = <50>;
+             key-positions = <15 27>;
+             bindings = <&kp GRAVE>;
+         };
+         combo_LBRC {
+             timeout-ms = <50>;
+             key-positions = <30 43>;
+             bindings = <&kp LBRC>;
+         };
+         combo_RBRC {
+             timeout-ms = <50>;
+             key-positions = <33 46>;
+             bindings = <&kp RBRC>;
+         };
+         combo_LPAR {
+             timeout-ms = <50>;
+             key-positions = <31 44>;
+             bindings = <&kp LPAR>;
+         };
+         combo_RPAR {
+             timeout-ms = <50>;
+             key-positions = <32 45>;
+             bindings = <&kp RPAR>;
+         };
+         combo_MINUS {
+             timeout-ms = <50>;
+             key-positions = <16 17>;
+             bindings = <&kp KP_MINUS>;
+         };
+         combo_PLUS {
+             timeout-ms = <50>;
+             key-positions = <14 15>;
+             bindings = <&kp KP_PLUS>;
+         };
+         combo_EQUAL {
+             timeout-ms = <50>;
+             key-positions = <15 16>;
+             bindings = <&kp EQUAL>;
+         };
+
+    };
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
-            // ---------------------------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
-            // |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
-            //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
+        QWERTY {
             bindings = <
-            &kp ESC   &kp Q &kp W &kp E &kp R &kp T                                                &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
-            &kp TAB   &kp A &kp S &kp D &kp F &kp G                                                &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-            &kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp LSHFT &kp LSHFT        &kp LSHFT &kp LSHFT &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
-            &kp LGUI &kp DEL &kp RET &kp SPACE &kp ESC        &kp RET  &kp SPACE  &kp TAB &kp BSPC &kp RALT
-            >;
+            // ╭──────0──────┬──────1──────┬─────2───────┬─────3───────┬─────4───────┬──────5──────╮                                                                            ╭──────6──────┬──────7──────┬─────8───────┬──────9──────┬─────10──────┬─────11──────╮
+                 &kp ESC       &kp Q          &kp W         &kp E         &kp R           &kp T                                                                                      &kp Y         &kp U         &kp I         &kp O         &kp P        &kp BSLH
+            // ├─────12──────┼─────13──────┼─────14──────┼─────15──────┼─────16──────┼──────17─────┤                                                                            ├──────18─────┼─────19──────┼─────20──────┼──────21─────┼─────22──────┼─────23──────┤
+                 &kp TAB       &kp A          &kp S         &kp  D        &kp F           &kp G                                                                                      &kp H         &kp J         &kp K        &kp  L        &kp SEMI     &kp SQT
+            // ├─────24──────┼─────25──────┼─────26──────┼─────27──────┼─────28──────┼──────29─────┤─────30──────┼─────31──────╮                   ╭──────32──────┬─────33──────┬──────34─────┼─────35──────┼─────36──────┼─────37─────┼─────38──────┼─────39──────┤
+                 &kp LALT      &kp Z         &kp X         &kp C         &kp V           &kp B        &kp LBKT      &kp LT                            &kp GT         &kp RBKT         &kp N         &kp M       &kp COMMA     &kp DOT       &kp SLASH    &kp RCTRL
+            // ╰─────────────┴─────────────┴─────────────┴─────40──────┼─────41──────┼──────42─────┤─────43──────┴─────44──────┤                   ├──────45──────┼─────46──────┼──────47─────┼─────48──────┼─────49──────┼─────────────┤─────────────┼─────────────┤
+                                                             &kp CAPS     &kp LGUI     &kp SPACE       &kp RCTRL    &kp LSHFT                          &kp RSHFT     &lt NUM RET  &lt NAV BSPC     &kp LGUI     &mo FUN
+            //                                           ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯                   ╰──────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
+          >;
+          sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        NAV {
+            bindings = <
+            // ╭──────0──────┬──────1──────┬─────2───────┬─────3───────┬─────4───────┬──────5──────╮                                                                            ╭──────6──────┬──────7──────┬─────8───────┬──────9──────┬─────10──────┬─────11──────╮
+                 &trans        &trans         &trans         &trans        &trans       &trans                                                                                      &trans    &kp LG(V)      &kp LG(C)    &trans         &trans        &trans
+            // ├─────12──────┼─────13──────┼─────14──────┼─────15──────┼─────16──────┼──────17─────┤                                                                            ├──────18─────┼─────19──────┼─────20──────┼──────21─────┼─────22──────┼─────23──────┤
+                 &trans        &trans         &trans         &trans        &trans       &trans                                                                                      &trans      &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT       &trans
+            // ├─────24──────┼─────25──────┼─────26──────┼─────27──────┼─────28──────┼──────29─────┤─────30──────┼─────31──────╮                   ╭──────32──────┬─────33──────┬──────34─────┼─────35──────┼─────36──────┼──────37─────┼─────38──────┼─────39──────┤
+                 &trans         &trans         &trans         &trans       &trans       &trans        &trans       &trans                            &trans          &trans          &trans      &trans        &trans        &trans        &trans         &trans
+            // ╰─────40──────┴─────41──────┴─────42──────┴─────43──────┼─────44──────┼──────45─────┤─────46──────┴─────47──────┤                   ├──────48──────┼─────49──────┼──────50─────┼─────51──────┼─────52──────┼─────────────┤─────────────┼─────────────┤
+                                                              &trans       &trans       &trans        &trans       &trans                            &trans          &trans          &trans      &trans        &trans
+            //                                           ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯                   ╰──────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
+          >;
+        };
+
+        NUM {
+            bindings = <
+            // ╭──────0──────┬──────1──────┬─────2───────┬─────3───────┬─────4───────┬──────5──────╮                                                                            ╭──────6──────┬──────7──────┬─────8───────┬──────9──────┬─────10──────┬─────11──────╮
+                 &trans        &trans         &trans         &trans        &trans         &trans                                                                                  &kp KP_PLUS     &kp N7       &kp N8         &kp N9         &trans      &trans
+            // ├─────12──────┼─────13──────┼─────14──────┼─────15──────┼─────16──────┼──────17─────┤                                                                            ├──────18─────┼─────19──────┼─────20──────┼──────21─────┼─────22──────┼─────23──────┤
+                 &trans        &trans         &trans         &trans        &trans         &trans                                                                                  &kp KP_DOT      &kp N4       &kp N5         &kp N6        &kp N0        &trans
+            // ├─────24──────┼─────25──────┼─────26──────┼─────27──────┼─────28──────┼──────29─────┤─────30──────┼─────31──────╮                   ╭──────32──────┬─────33──────┬──────34─────┼─────35──────┼─────36──────┼──────37─────┼─────38──────┼─────39──────┤
+                 &trans         &trans         &trans         &trans       &trans       &trans        &trans       &trans                            &trans          &trans      &kp KP_MINUS      &kp N1       &kp N2         &kp N3        &trans        &trans
+            // ╰─────40──────┴─────41──────┴─────42──────┴─────43──────┼─────44──────┼──────45─────┤─────46──────┴─────47──────┤                   ├──────48──────┼─────49──────┼──────50─────┼─────51──────┼─────52──────┼─────────────┤─────────────┼─────────────┤
+                                                              &trans       &trans       &trans        &trans       &trans                            &trans          &trans          &trans      &trans        &trans
+            //                                           ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯                   ╰──────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
+          >;
+        };
+
+        FUN {
+            bindings = <
+            // ╭──────0──────┬──────1──────┬─────2───────┬─────3───────┬─────4───────┬──────5──────╮                                                                            ╭──────6──────┬──────7──────┬─────8───────┬──────9──────┬─────10──────┬─────11──────╮
+                 &trans        &trans         &trans         &trans     &rgb_ug RGB_TOG &rgb_ug RGB_BRI                                                                              &trans       &kp F7       &kp F8         &kp F9        &trans        &trans
+            // ├─────12──────┼─────13──────┼─────14──────┼─────15──────┼─────16──────┼──────17─────┤                                                                            ├──────18─────┼─────19──────┼─────20──────┼──────21─────┼─────22──────┼─────23──────┤
+                 &trans        &trans         &trans         &trans        &trans      &rgb_ug RGB_BRD                                                                               &trans       &kp F4       &kp F5         &kp F6        &trans         &trans
+            // ├─────24──────┼─────25──────┼─────26──────┼─────27──────┼─────28──────┼──────29─────┤─────30──────┼─────31──────╮                   ╭──────32──────┬─────33──────┬──────34─────┼─────35──────┼─────36──────┼──────37─────┼─────38──────┼─────39──────┤
+                 &trans         &trans         &trans         &trans       &trans       &trans      &rgb_ug RGB_EFF  &trans                            &trans          &trans          &trans       &kp F1       &kp F2         &kp F3        &trans          &trans
+            // ╰─────40──────┴─────41──────┴─────42──────┴─────43──────┼─────44──────┼──────45─────┤─────46──────┴─────47──────┤                   ├──────48──────┼─────49──────┼──────50─────┼─────51──────┼─────52──────┼─────────────┤─────────────┼─────────────┤
+                                                              &trans       &trans       &trans      &rgb_ug RGB_EFF   &trans                            &trans          &trans          &trans      &trans        &trans
+            //                                           ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯                   ╰──────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
+          >;
         };
     };
 };
